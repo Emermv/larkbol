@@ -2,7 +2,7 @@
   <div >
 <div class="md-layout md-align-center">
     <div class="md-layout md-flex-100 md-align-center">
-  <img src="../assets/star.png" alt="" style="height:60px">
+  <img src="../assets/star.png" alt="" style="height:60px;margin-bottom:10px">
     </div>
         <div v-for="(piso,index) in lark_bloks" class="md-layout md-flex-100 md-align-center" :key="index" style="margin:0.5px 0" >
          <img  v-for="(p,index2) in piso" :key="p.id" :src="ladrillos[p.type]" alt=""  style="height:26px;margin: 0 0.5px" @click="show(p,index,index2)" class="cp">
