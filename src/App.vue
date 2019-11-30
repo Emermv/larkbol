@@ -125,6 +125,21 @@ height: 110px;
 .arrow.right{
   right: 100px;
 }
+.dialog{
+  position: absolute;
+  right: 0;
+  top: 0;
+  left:0;
+  bottom: 0;
+  background:#351505c4;
+}
+.dialog .close{
+  color:#d15563;
+  font-size: 2rem;
+  position: absolute;
+  font-family: Futura;
+  right: 10px;
+}
 @media only screen and (max-width: 996px){
   #arbol{
     width: 100%;
