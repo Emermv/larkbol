@@ -7,7 +7,7 @@
         <div v-for="(piso,index) in lark_bloks" class="md-layout md-flex-100 md-align-center" :key="index" style="margin:0.5px 0" >
           <span v-for="(p,index2) in piso" :key="p.id" class="lark-block cp" :style="{'background-image':'url('+ladrillos[p.type]+')'}" @click="show(p,index,index2)" >
         
-         {{p.name}}
+         {{p.short_name}}
           </span>
         </div>
 </div>

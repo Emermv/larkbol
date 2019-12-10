@@ -1,14 +1,7 @@
 <template>
   <div id="app">
     <div class="header md-layout md-vertical-align-center">
- <div class="md-layout md-flex-80 md-flex-xsmall-100 md-flex-small-100 md-align-xsmall-center md-align-small-center ">
-    <router-link to="/"><img src="./assets/larkbol-logo.png" alt="El larkbolito" class="logo"></router-link>
- </div>
-  <div class="nav md-layout md-flex-20 md-vertical-align-center md-hide-small md-hide-xsmall">
-         <a class="cp" @click="navigate('/dinamica')">DINÁMICA</a>
-         <a class="cp" @click="navigate('/bases')">CONDICIONES</a>
-         <a class="cp" @click="navigate('/premio')">PREMIOS</a>
-      </div>
+<lark-nav></lark-nav>
     </div>
     <div id="main" :style="style">
        <router-view></router-view>
@@ -33,14 +26,14 @@ export default {
   data(){
      return {
        style:{
-         height:(window.innerHeight-200)+'px'
+         height:(window.innerHeight-174)+'px'
        },
       
      }
   },
   created(){
  window.$resize.resizeApp=()=>{
-       this.style.height=(window.innerHeight-200)+'px';
+       this.style.height=(window.innerHeight-174)+'px';
  };
   },
 methods:{
@@ -84,11 +77,11 @@ a:link{
   text-overflow: ellipsis;
 }
 .large-block{
-width: 40%;
+width: 30%;
 background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: 'Helvetica-Neue';
+  font-family: 'Futura';
    display: flex;
     align-items: center;
     justify-content: center;
@@ -106,8 +99,9 @@ background-size: cover;
   height: 200px;
 }
 .large-block.last,.large-block.future{
-  height: 100px;
+  height: 120px;
     font-size: 0.8rem;
+    width: 25%;
 }
 .large-block.last h3,.large-block.futre h3{
     font-size: 1rem !important;
@@ -152,8 +146,7 @@ background-size: cover;
   font-size: .8rem;
 }
 .header{
-  height: 150px;
-  padding: 0 100px;
+  padding: 5px 100px;
 }
 .header .logo{
 height: 110px;
@@ -224,8 +217,10 @@ height: 110px;
   .arrow.left{
     left:5px;
   }
-  .large-block{
+
+  .large-block, .large-block.future, .large-block.last{
     width: 90%;
+    font-size: .75rem;
   }
   .lark-block{
     height: 18px;
@@ -235,5 +230,16 @@ height: 110px;
   .large-block.active{
     height: 140px;
   }
+  .header{
+    padding: 5px 10px;
+  }
+}
+@media only screen and (max-width: 1500px){
+    .lark-block{
+    height: 24px;
+    max-width: 70px;
+    font-size: 10px;
+  }
+
 }
 </style>

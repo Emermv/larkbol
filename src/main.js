@@ -5,9 +5,10 @@ import Home from './components/Home';
 import Dinamica from './components/Dinamica';
 import Bases from './components/Bases';
 import Premio from './components/Premio';
-
+import Nav from './components/Nav';
 Vue.use(VueRouter);
 Vue.config.productionTip = false
+Vue.component('lark-nav',Nav);
 const routes = [
   { path: '/', component: Home },
   {path:'/dinamica',component:Dinamica},
@@ -49,3 +50,4 @@ new Vue({
   render: h => h(App),
   
 }).$mount('#app')
+
