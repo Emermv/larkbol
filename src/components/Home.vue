@@ -74,7 +74,11 @@ export default {
           last:{},
           future:{},
           active_index:0,
-          active_line:0
+          active_line:0,
+          limit:104,
+          start:0,
+          completed:false,
+          loading:false,
         
      }
   },
@@ -87,36 +91,18 @@ export default {
  //this.create_blank();
   },
   methods:{
-      uniqueId(length=8) {
-    var chars = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    if (! length) {
-        length = Math.floor(Math.random() * chars.length);
-    }
-    var str = '';
-    for (var i = 0; i < length; i++) {
-        str += chars[Math.floor(Math.random() * chars.length)];
-    }
-    return str;
-},
-      create_blank(){
-          //size=105
-          var blocks=[];
-         for(var b of this.default_blocks){
-             var piso=[];
-             for(var l=0;l<b;l++){
-                 piso.push({name:'Emer isau',type:Math.floor(Math.random()*3) + 1,id:this.uniqueId()});
-             }
-              blocks.push(piso);
-         }
-         this.$set(this,'lark_bloks',blocks);
-        
-      },
+
       left(){
          if(this.show_dialog){
             this.active_index--;
           var found=this.find_active(this.active_line,this.active_index,false);
           if(found.p){
             this.handle_show(this.lark_bloks[found.p][found.i],found.p,found.i);
+          }
+        }else{
+          if(this.start>=this.limit){
+              this.start-=this.limit;
+          this.get();
           }
         }
       },
@@ -129,6 +115,11 @@ export default {
             this.handle_show(this.lark_bloks[found.p][found.i],found.p,found.i);
           }
 
+        }else{
+        if(this.completed){
+            this.start+=this.limit;
+          this.get();
+        }
         }
       },
           find_active(piso,active,next=true){
@@ -215,11 +206,19 @@ request.send(data);
        });
       },
       get(){
-        this.http("http://159.203.112.192/dashboard/service/larkbol/get",{}).then(response=>{
+    if(!this.loading){
+              this.loading=true;
+        this.http("http://159.203.112.192/dashboard/service/larkbol/get",{
+          start:this.start,
+          limit:this.limit
+        }).then(response=>{
             if(response.state){
               this.lark_bloks=response.tree;
+              this.completed=response.completed;
             }
+            this.loading=false;
         });
+    }
       }
   }
 }

@@ -237,8 +237,8 @@ height: 110px;
 @media only screen and (max-width: 1500px){
     .lark-block{
     height: 24px;
-    max-width: 70px;
-    font-size: 10px;
+    max-width: 80px;
+    font-size: 11px;
   }
 
 }
