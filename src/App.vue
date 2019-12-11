@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div >
     <div class="header md-layout md-vertical-align-center">
 <lark-nav></lark-nav>
     </div>
