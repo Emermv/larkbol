@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div id="root">
     <div class="header md-layout md-vertical-align-center">
 <lark-nav></lark-nav>
     </div>
@@ -123,7 +123,7 @@ background-size: cover;
     color: white;
 }
 
-#app{
+#root{
    background-image: url(./assets/fondo.png);
    height:100%;
    background-size: cover;
